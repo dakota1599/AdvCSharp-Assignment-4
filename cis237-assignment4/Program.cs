@@ -22,7 +22,7 @@ namespace cis237_assignment4
             int choice = userInterface.GetMenuChoice();
 
             // While the choice is not equal to 3, continue to do work with the program
-            while (choice != 3)
+            while (choice != 5)
             {
                 // Test which choice was made
                 switch (choice)
@@ -34,6 +34,15 @@ namespace cis237_assignment4
 
                     // Choose to Print the droid
                     case 2:
+                        userInterface.PrintDroidList();
+                        break;
+
+                    // Choose to Sort List by Type
+                    case 3:
+                        droidCollection.BucketSort();
+
+                        //Printing back out the newly ordered list.
+                        Console.WriteLine("\nThe Bucked Sorted List...");
                         userInterface.PrintDroidList();
                         break;
                 }

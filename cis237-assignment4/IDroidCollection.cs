@@ -14,5 +14,8 @@ namespace cis237_assignment4
 
         // Method to get the data for a droid into a nicely formated string that can be output.
         string GetPrintString();
+
+        // The sort method to be overriden in the below droid collection class.
+        void BucketSort();
     }
 }

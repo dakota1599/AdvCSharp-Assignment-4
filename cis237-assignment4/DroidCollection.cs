@@ -11,6 +11,9 @@ namespace cis237_assignment4
         // Private variable to hold the length of the Collection
         private int lengthOfCollection;
 
+
+
+
         // Constructor that takes in the size of the collection.
         // It sets the size of the internal array that will be used.
         // It also sets the length of the collection to zero since nothing is added yet.
@@ -18,8 +21,25 @@ namespace cis237_assignment4
         {
             // Make new array for the collection
             droidCollection = new IDroid[sizeOfCollection];
+
+            //Hard coded in droids for testing and what not.
+            droidCollection[0] = new JanitorDroid(Droid.Materials.Carbonite, Droid.Colors.Blue, true, true, true, true, false);
+            droidCollection[1] = new ProtocolDroid(Droid.Materials.Carbonite, Droid.Colors.Blue, 5);
+            droidCollection[2] = new UtilityDroid(Droid.Materials.Quadranium, Droid.Colors.Blue, true, false, true);
+            droidCollection[3] = new ProtocolDroid(Droid.Materials.Carbonite, Droid.Colors.Blue, 5);
+            droidCollection[4] = new JanitorDroid(Droid.Materials.Carbonite, Droid.Colors.Blue, true, true, true, true, false);
+            droidCollection[5] = new JanitorDroid(Droid.Materials.Carbonite, Droid.Colors.Blue, true, true, true, true, false);
+            droidCollection[6] = new AstromechDroid(Droid.Materials.Carbonite, Droid.Colors.Blue, true, true, true, true, 10);
+            droidCollection[7] = new ProtocolDroid(Droid.Materials.Carbonite, Droid.Colors.Blue, 5);
+            droidCollection[8] = new UtilityDroid(Droid.Materials.Quadranium, Droid.Colors.Blue, true, false, true);
+            droidCollection[9] = new AstromechDroid(Droid.Materials.Carbonite, Droid.Colors.Blue, true, true, true, true, 10);
+            droidCollection[10] = new JanitorDroid(Droid.Materials.Carbonite, Droid.Colors.Blue,true, true, true, true, false);
+            droidCollection[11] = new AstromechDroid(Droid.Materials.Carbonite, Droid.Colors.Blue, true, true, true, true, 10);
+
+
+
             // Set length of collection to 0
-            lengthOfCollection = 0;
+            lengthOfCollection = 12;
         }
 
         // The Add method for a Protocol Droid. The parameters passed in match those needed for a protocol droid
@@ -119,6 +139,75 @@ namespace cis237_assignment4
 
             // Return the completed string
             return returnString;
+        }
+
+        public void BucketSort() {
+            //Creating the stacks for each of the droid types.
+            GenericStack<IDroid> astroStack = new GenericStack<IDroid>();
+            GenericStack<IDroid> janStack = new GenericStack<IDroid>();
+            GenericStack<IDroid> proStack = new GenericStack<IDroid>();
+            GenericStack<IDroid> utilStack = new GenericStack<IDroid>();
+
+            //Creating the queue that all the droids will be in.
+            GenericQueue<IDroid> droidQueue = new GenericQueue<IDroid>();
+
+            //For looping through the array of droids.
+            for (int i = 0; i < droidCollection.Length; i++) {
+                //If the index of the collection is null, the loop ends.
+                if (droidCollection[i] == null)
+                {
+                    i = droidCollection.Length;
+                }
+                else {
+                    //The following checks to see if the current index of the collection is
+                    //one of the four droid types. It then places them in their respective
+                    //stacks.
+                    if (droidCollection[i] is AstromechDroid)
+                    {
+                        astroStack.Push(droidCollection[i]);
+                    }
+                    else if (droidCollection[i] is JanitorDroid)
+                    {
+                        janStack.Push(droidCollection[i]);
+                    }
+                    else if (droidCollection[i] is UtilityDroid)
+                    {
+                        utilStack.Push(droidCollection[i]);
+                    }
+                    else {
+                        proStack.Push(droidCollection[i]);
+                    }
+                }
+            }
+
+            //This will hold the size for each stack since their sizes decrease with each
+            //call of Pop().
+            int sizeHold = astroStack.Size;
+
+            //All four of the stacks are then emptied into the queue using for loops.
+            for (int i = 0; i < sizeHold; i++) {
+                droidQueue.Enqueue(astroStack.Pop());
+            }
+            sizeHold = janStack.Size;
+            for (int i = 0; i < sizeHold; i++) {
+                droidQueue.Enqueue(janStack.Pop());
+            }
+            sizeHold = utilStack.Size;
+            for (int i = 0; i < sizeHold; i++) {
+                droidQueue.Enqueue(utilStack.Pop());
+            }
+            sizeHold = proStack.Size;
+            for (int i = 0; i < sizeHold; i++) {
+                droidQueue.Enqueue(proStack.Pop());
+            }
+
+            //Now adding all the stuff from the queue back into the original collection.
+            for (int i = 0; i < lengthOfCollection; i++) {
+                droidCollection[i] = droidQueue.Dequeue();
+            }
+
+           
+
         }
     }
 }
