@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ DAKOTA SHAPIRO
+ CIS 237 MW 3:30PM - 5:45PM
+ LAST UPDATED: 10/31/19
+ */
+
+
+using System;
 
 namespace cis237_assignment4
 {
@@ -42,8 +49,14 @@ namespace cis237_assignment4
                         droidCollection.BucketSort();
 
                         //Printing back out the newly ordered list.
-                        Console.WriteLine("\nThe Bucked Sorted List...");
-                        userInterface.PrintDroidList();
+                        Console.WriteLine("\n[List Sorted by Droid Type]");
+                        break;
+                    // Choose to Sort List by Total Cost
+                    case 4:
+                        droidCollection.MergeSort();
+
+                        //Printing back out the newly ordered list.
+                        Console.WriteLine("\n[List Sorted by Total Cost]");
                         break;
                 }
                 // Re-display the menu, and re-prompt for the choice

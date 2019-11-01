@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ DAKOTA SHAPIRO
+ CIS 237 MW 3:30PM - 5:45PM
+ LAST UPDATED: 10/31/19
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,7 +21,9 @@ namespace cis237_assignment4
         // Method to get the data for a droid into a nicely formated string that can be output.
         string GetPrintString();
 
-        // The sort method to be overriden in the below droid collection class.
+        // The sort methods to be overriden in the below droid collection class.
         void BucketSort();
+        void MergeSort();
+
     }
 }

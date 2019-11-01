@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ DAKOTA SHAPIRO
+ CIS 237 MW 3:30PM - 5:45PM
+ LAST UPDATED: 10/31/19
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -23,6 +29,8 @@ namespace cis237_assignment4
             // Assign the values for the constructor that are not handled by the base constructor
             this.hasFireExtinguisher = HasFireExtinquisher;
             this.numberOfShips = NumberOfShips;
+
+            CalculateTotalCost();
         }
 
         // Overridden method to calculate the cost of options. Uses the base class to do some of the calculations

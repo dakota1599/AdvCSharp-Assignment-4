@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ DAKOTA SHAPIRO
+ CIS 237 MW 3:30PM - 5:45PM
+ LAST UPDATED: 10/31/19
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -127,7 +133,7 @@ namespace cis237_assignment4
                     // Calculate the total cost of the droid. Since we are using inheritance and Polymorphism
                     // the program will automatically know which version of CalculateTotalCost it needs to call based
                     // on which particular type it is looking at during the foreach loop.
-                    droid.CalculateTotalCost();
+                   
                     // Create the string now that the total cost has been calculated
                     returnString += "******************************" + Environment.NewLine;
                     returnString += droid.ToString() + Environment.NewLine + Environment.NewLine;
@@ -141,6 +147,12 @@ namespace cis237_assignment4
             return returnString;
         }
 
+
+        /// <summary>
+        /// The Bucket sort is using generic stacks and a generic queue to dump the different
+        /// types of droids into their own groups, then bring them back together in an ordered
+        /// way in the queue so that they can be transferred back to the original array.
+        /// </summary>
         public void BucketSort() {
             //Creating the stacks for each of the droid types.
             GenericStack<IDroid> astroStack = new GenericStack<IDroid>();
@@ -207,6 +219,38 @@ namespace cis237_assignment4
             }
 
            
+
+        }
+
+
+        /// <summary>
+        /// MergeSort is sorting the array by total cost by using the IComparable interface to compare
+        /// the different droid types and their total costs. The algorithm used to sort the array is a bit of a
+        /// pill to swallow, so I've taken the liberty of including here the link to where you can find more documentation
+        /// on it: https://algs4.cs.princeton.edu/22mergesort/
+        /// </summary>
+        public void MergeSort() {
+            MergeSort mergeSort = new MergeSort();
+            IDroid[] tempDroidCollection = new IDroid[lengthOfCollection];
+
+            //Copying droidCollection to tempDroidCollection to reduce the size of the array.
+            //If the size is not reduced, the array will be too large and overflow the call stack.
+            for (int i = 0; i < tempDroidCollection.Length; i++) {
+                tempDroidCollection[i] = droidCollection[i];
+            }
+
+
+
+            mergeSort.Sort(tempDroidCollection);
+
+            //Pasting back in the newly ordered droids to the original droidCollection.
+            for (int i = 0; i < tempDroidCollection.Length; i++) {
+                droidCollection[i] = tempDroidCollection[i];
+            }
+
+            //Nulling the array so garbage collection can rid of the uneccessary data.
+            tempDroidCollection = null;
+
 
         }
     }

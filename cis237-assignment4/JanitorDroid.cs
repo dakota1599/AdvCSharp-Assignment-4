@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ DAKOTA SHAPIRO
+ CIS 237 MW 3:30PM - 5:45PM
+ LAST UPDATED: 10/31/19
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -20,6 +26,8 @@ namespace cis237_assignment4
             // Assign the values that the base constructor is not taking care of.
             this.hasTrashCompactor = HasTrashCompactor;
             this.hasVacuum = HasVacuum;
+
+            CalculateTotalCost();
         }
 
         // Override the CalculateCostOfOptions method.

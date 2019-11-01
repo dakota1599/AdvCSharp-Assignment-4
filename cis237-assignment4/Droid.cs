@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ DAKOTA SHAPIRO
+ CIS 237 MW 3:30PM - 5:45PM
+ LAST UPDATED: 10/31/19
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -132,6 +138,29 @@ namespace cis237_assignment4
             }
 
             return colorCost;
+        }
+
+
+        /// <summary>
+        /// This is for comparing two different droid's total costs so that they can be sorted by cost.
+        /// </summary>
+        /// <param name="obj"></param>
+        public int CompareTo(object obj) {
+            //Try catch in case obj cannot be downcasted as a droid.
+            try
+            {
+                //Sets obj as a droid
+                IDroid droid = obj as Droid;
+
+                if (droid != null) {
+                    return this.TotalCost.CompareTo(droid.TotalCost);
+                }
+            }
+            catch {
+                //Exception in case obj is not a droid.
+                throw new Exception("Object entered is not a droid.");
+            }
+            return 0;
         }
     }
 }
