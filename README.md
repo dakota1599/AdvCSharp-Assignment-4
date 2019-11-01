@@ -3,7 +3,7 @@
 ## Due: 11-05-2019
 
 ## Author
-
+Dakota Shapiro
 
 
 ## Description
@@ -92,11 +92,12 @@ Be sure to think about what the time complexity for the bucket sort will be. Thi
 | **Total**                               | **100**|
 
 ## Outside Resources Used
-
+https://algs4.cs.princeton.edu/22mergesort/
+https://docs.microsoft.com/en-us/dotnet/api/system.icomparable?view=netframework-4.8
 
 
 ## Known Problems, Issues, And/Or Errors in the Program
-
+N/A
 
 
 ## Assignment 3 Description for reference
